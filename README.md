@@ -1,8 +1,4 @@
-# Byte
-Rediscover your music
-
-Interact with your music and fall in love with your library all over again.
-Byte offers a beautiful presentation of your Music Library with loads of powerful features in a minimalistic yet highly customizable UI.
+This is an unofficial fork of the original Byte project with some changes that I wanted for personal use. If you are interested in or have questions about the official or flatpak versions please see the this [repository](https://github.com/ellie-commons/byte). Credit goes to the elementary team for basically every part of the code, all my changes have been ascetic. If you want to support the project please donate directly to them through their patreon or paypall links found in their repository. 
 
 ## Handy features:
 
@@ -13,16 +9,12 @@ Byte offers a beautiful presentation of your Music Library with loads of powerfu
 * Group Playlists, Albums, Artists, Songs, etc.
 * Search, add and play your favorite online radio stations.
 
-<p align="center">
-  <a href="https://appcenter.elementary.io/com.github.alainm23.byte">
-    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
-  </a>
-  <a href="https://flathub.org/apps/details/com.github.alainm23.byte"><img height="50" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
-</p>
-
-![Byte Screenshot](https://github.com/alainm23/byte/raw/master/data/screenshot/screenshot-01.png)
+Coming soon
+* Play music by folder
 
 ## Building and Installation
+
+**There is no prebuild artifact that I am hosting, so you will need to build the project yourself.**
 
 You'll need the following dependencies:
 * libgtk-3-dev
@@ -37,7 +29,8 @@ You'll need the following dependencies:
 * valac >= 0.40.3
 
 For Fedora
-`sudo dnf install granite-devel gtk3-devel glib2-devel libgee-devel libxml2-devel vala meson ninja-build pkgconfig gettext json-glib-devel`
+
+    sudo dnf install granite-devel gtk3-devel glib2-devel libgee-devel libxml2-devel vala meson ninja-build pkgconfig gettext json-glib-devel
 
 ## Building  
 
@@ -51,8 +44,3 @@ To install, use `ninja install`, then execute with `com.github.alainm23.byte`
 
     sudo ninja install
     com.github.alainm23.byte
-
-## Support
-If you like Byte and you want to support its development,consider supporting via [Patreon](https://www.patreon.com/alainm23) or [PayPal](https://www.paypal.me/alainm23)
-
-Made with 💗 in Perú
