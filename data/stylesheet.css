@@ -1,15 +1,15 @@
-@define-color color_primary #fe2851;
-@define-color textColorPrimary #ffffff;
-@define-color bg_color shade (@base_color, 0.98);
+@define-color color_primary #5621f2;
+@define-color text_color #ffffff;
+@define-color bg_color shade(@base_color, 0.98);
 
-@define-color color_accent #fe2851;
+@define-color color_accent #5621f2;
 
 entry {
-    caret-color: @colorAccent;
+    caret-color: @color_accent;
 }
 
 textview {
-    caret-color: @colorAccent;
+    caret-color: @color_accent;
 }
 
 .titlebar {
@@ -26,16 +26,16 @@ textview {
 }
 
 .byte-seekbar highlight {
-    background-color: @colorAccent;
+    background-color: @color_accent;
 }
 
 .album-row button {
-    color: @colorAccent;
+    color: @color_accent;
     background-color: transparent;
 }
 
 .album-row button image {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .album-row {
@@ -48,15 +48,15 @@ textview {
 }
 
 .track-row:selected {
-    background-color: @colorAccent;
+    background-color: @color_accent;
 }
 
 .track-row:selected label {
-    color: @textColorPrimary;
+    color: @text_color;
 }
 
 .track-row:selected button {
-    color: @textColorPrimary;
+    color: @text_color;
 }
 
 .track-queue-row:selected {
@@ -71,11 +71,11 @@ textview {
 }
 
 .slider-button.active {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .header-label {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .sub-header-label {
@@ -83,7 +83,7 @@ textview {
 }
 
 .button-color {
-    color: @colorAccent;
+    color: @color_accent;
     background-color: transparent;
 }
 
@@ -147,28 +147,28 @@ textview {
 }
 
 .quick-find-entry:focus {
-    border-color: alpha (@colorAccent, 0.8);
+    border-color: alpha (@color_accent, 0.8);
 }
 
 .quick-find-entry {
-    border-color: alpha (@colorAccent, 0.8);
+    border-color: alpha (@color_accent, 0.8);
     box-shadow: none;
     background-image: none;
     background: #F6F8FB;
     border-radius: 4px;
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .quick-find-entry image.left {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .quick-find-entry image.right {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 selection {
-    background-color: alpha (@colorAccent, 0.75);
+    background-color: alpha (@color_accent, 0.75);
     color: @selected_fg_color;
     text-shadow: none;
 }
@@ -187,7 +187,7 @@ selection {
 }
 
 .queue-title {
-    background-color: @colorAccent;
+    background-color: @color_accent;
     border-radius: 4px 4px 0px 0px;
     /*
     border: 1px solid @colorPrimary;
@@ -204,7 +204,7 @@ selection {
 
 .font-album-artist {
     font-weight: 600;
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .home-button {
@@ -220,18 +220,18 @@ selection {
 }
 
 .quick-find-modebutton button {
-    border: 1px solid @colorAccent;
+    border: 1px solid @color_accent;
     color: @colorPrimary;
     background-image: none;
 }
 
 .quick-find-modebutton button:checked {
-    background-color: @colorAccent;
+    background-color: @color_accent;
     color: #ffffff;
 }
 
 .quick-find-modebutton button:first-child {
-    border-left: 1px solid @colorAccent;
+    border-left: 1px solid @color_accent;
     border-top: 1px solid @colorAccent;
     border-bottom: 1px solid @colorAccent;
     border-right: none;
@@ -241,7 +241,7 @@ selection {
 
 .quick-find-modebutton button:last-child {
     border-left: none;
-    border-top: 1px solid @colorAccent;
+    border-top: 1px solid @color_accent;
     border-bottom: 1px solid @colorAccent;
     border-right: 1px solid @colorAccent;
     border-radius: 0px 4px 4px 0px;
@@ -250,13 +250,13 @@ selection {
 .quick-find-add-radio {
     border-radius: 50%;
     padding: 0px;
-    background-color: @colorAccent;
+    background-color: @color_accent;
     color: #ffffff;
     border: 1px solid @colorAccent;
 }
 
 .sort-button {
-    color: @colorAccent;
+    color: @color_accent;
     border-radius: 6px;
 }
 
@@ -269,13 +269,13 @@ selection {
 }
 
 .options-button {
-    color: @colorAccent;
+    color: @color_accent;
     border-radius: 4px;
     padding: 2px;
 }
 
 .remove-button {
-    background-color: @colorAccent;
+    background-color: @color_accent;
     color: #ffffff;
     border-radius: 50%;
     padding: 0px;
@@ -290,13 +290,13 @@ selection {
 }
 
 .add-playlist {
-    background-color: @colorAccent;
+    background-color: @color_accent;
     color: #fff;
     border-radius: 4px;
 }
 
 .add-playlist-entry {
-    border-color: alpha (@colorAccent, 0.8);
+    border-color: alpha (@color_accent, 0.8);
     box-shadow: none;
     background-image: none;
     background: #F6F8FB;
@@ -304,18 +304,18 @@ selection {
 }
 
 .icon-color-primary {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .track-options:hover {
-    background-color: alpha (@colorAccent, 0.6);
+    background-color: alpha (@color_accent, 0.6);
 }
 
 overshoot.top {
     background:
         linear-gradient(
             to top,
-            alpha(@colorAccent, 0) 80%,
+            alpha(@color_accent, 0) 80%,
             alpha(@colorAccent, 0.25) 100%
         );
 }
@@ -324,8 +324,8 @@ overshoot.right {
     background:
         linear-gradient(
             to right,
-            alpha(@colorAccent, 0) 80%,
-            alpha(@colorAccent, 0.25) 100%
+            alpha(@color_accent, 0) 80%,
+            alpha(@color_accent, 0.25) 100%
         );
 }
 
@@ -333,8 +333,8 @@ overshoot.bottom {
     background:
         linear-gradient(
             to bottom,
-            alpha(@colorAccent, 0) 80%,
-            alpha(@colorAccent, 0.25) 100%
+            alpha(@color_accent, 0) 80%,
+            alpha(@color_accent, 0.25) 100%
         );
 }
 
@@ -342,13 +342,13 @@ overshoot.left {
     background:
         linear-gradient(
             to left,
-            alpha(@colorAccent, 0) 80%,
-            alpha(@colorAccent, 0.25) 100%
+            alpha(@color_accent, 0) 80%,
+            alpha(@color_accent, 0.25) 100%
         );
 }
 
 .label-color-primary {
-    color: @colorAccent;
+    color: @color_accent;
 }
 
 .mode-button {
@@ -402,7 +402,7 @@ overshoot.left {
 
 .sync-image {
     animation: spin 1000ms linear infinite;
-    color: @colorAccent
+    color: @color_accent
 }
 
 /*
