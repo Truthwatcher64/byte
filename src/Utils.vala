@@ -18,9 +18,9 @@ public class Utils : GLib.Object {
     public string COVER_FOLDER;
 
     bool dark_mode;
-    string colorPrimary;
-    string colorAccent;
-    string textColorPrimary;
+    string color_primary;
+    string color_accent;
+    string text_color;
 
     public Utils () {
         MAIN_FOLDER = Environment.get_home_dir () + "/.local/share/com.github.alainm23.byte";
@@ -330,38 +330,43 @@ public class Utils : GLib.Object {
     }
 
     public void apply_theme (int id) {
+        string light_purple = "#a182ff";
+        string dark_purple = "#5621f2";
+        string red = "#fe2851";
+        string black = "#000";
+        string white = "#fff";
         if (id == 1) {
             dark_mode = false;
-            colorPrimary = "#fe2851";
-            colorAccent = "#fe2851";
-            textColorPrimary = "#fff";
+            color_primary = dark_purple;
+            color_accent = dark_purple;
+            text_color = black;
         } else if (id == 2) {
             dark_mode = true;
-            colorPrimary = "mix(@BLACK_500, @BLACK_300, 0.5)";
-            colorAccent = "#fe2851";
-            textColorPrimary = "#fe2851";
+            color_primary = red;
+            color_accent = red;
+            text_color = white;
         } else if (id == 3) {
             dark_mode = true;
-            colorPrimary = "#36E683";
-            colorAccent = "#36E683";
-            textColorPrimary = "#333";
+            color_primary = light_purple;
+            color_accent = light_purple;
+            text_color = white;
         }
 
         Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = dark_mode;
 
         string THEME_CSS = """
-            @define-color colorPrimary %s;
-            @define-color colorAccent %s;
-            @define-color textColorPrimary %s;
+            @define-color color_primary %s;
+            @define-color color_accent %s;
+            @define-color text_color %s;
         """;
 
         var provider = new Gtk.CssProvider ();
 
         try {
             var theme_css = THEME_CSS.printf (
-                colorPrimary,
-                colorAccent,
-                textColorPrimary
+                color_primary,
+                color_accent,
+                text_color
             );
 
             provider.load_from_data (theme_css, theme_css.length);
