@@ -36,6 +36,9 @@ You'll need the following dependencies:
 * meson
 * valac >= 0.40.3
 
+For Fedora
+`sudo dnf install granite-devel gtk3-devel glib2-devel libgee-devel libxml2-devel vala meson ninja-build pkgconfig gettext json-glib-devel`
+
 ## Building  
 
 Run `meson build` to configure the build environment. Change to the build directory and run `ninja` to build
