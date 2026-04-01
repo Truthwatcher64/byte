@@ -1,4 +1,4 @@
-This is an unofficial fork of the original Byte project with some changes that I wanted for personal use. If you are interested in or have questions about the official or flatpak versions please see the this [repository](https://github.com/ellie-commons/byte). Credit goes to the elementary team for basically every part of the code, all my changes have been ascetic. If you want to support the project please donate directly to them through their patreon or paypall links found in their repository. 
+This is an unofficial fork of the original Byte project with some changes that I wanted for personal use. If you are interested in or have questions about the official or flatpak versions please see the this [repository](https://github.com/ellie-commons/byte). Credit goes to the elementary team for basically every part of the code, all my changes have been ascetic. If you want to support the project please donate directly to them through their patreon or paypal links found in their repository. 
 
 ## Handy features:
 
@@ -8,8 +8,6 @@ This is an unofficial fork of the original Byte project with some changes that I
 * Advanced Media Details and Artist Info.
 * Group Playlists, Albums, Artists, Songs, etc.
 * Search, add and play your favorite online radio stations.
-
-Coming soon
 * Play music by folder
 
 ## Building and Installation
