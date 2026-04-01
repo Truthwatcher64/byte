@@ -562,6 +562,57 @@ public class Services.Database : GLib.Object {
         return track;
     }
 
+    public Gee.ArrayList<Objects.Track?> get_all_tracks_by_folder (string folder_uri) {
+        Sqlite.Statement stmt;
+        string sql;
+        int res;
+
+        string folder = folder_uri;
+        if (!folder.has_suffix ("/")) {
+            folder = folder + "/";
+        }
+
+        sql = """
+            SELECT tracks.id, tracks.path, tracks.title, tracks.duration, tracks.is_favorite, tracks.track, tracks.date_added,
+            tracks.play_count, tracks.album_id, albums.title, artists.id, artists.name, tracks.favorite_added, tracks.last_played FROM tracks
+            INNER JOIN albums ON tracks.album_id = albums.id
+            INNER JOIN artists ON albums.artist_id = artists.id
+            WHERE tracks.path LIKE ?
+            ORDER BY tracks.path;
+        """;
+
+        res = db.prepare_v2 (sql, -1, out stmt);
+        assert (res == Sqlite.OK);
+
+        res = stmt.bind_text (1, folder + "%");
+        assert (res == Sqlite.OK);
+
+        var all = new Gee.ArrayList<Objects.Track?> ();
+
+        while ((res = stmt.step ()) == Sqlite.ROW) {
+            var track = new Objects.Track ();
+
+            track.id = stmt.column_int (0);
+            track.path = stmt.column_text (1);
+            track.title = stmt.column_text (2);
+            track.duration = stmt.column_int64 (3);
+            track.is_favorite = stmt.column_int (4);
+            track.track = stmt.column_int (5);
+            track.date_added = stmt.column_text (6);
+            track.play_count = stmt.column_int (7);
+            track.album_id = stmt.column_int (8);
+            track.album_title = stmt.column_text (9);
+            track.artist_id = stmt.column_int (10);
+            track.artist_name = stmt.column_text (11);
+            track.favorite_added = stmt.column_text (12);
+            track.last_played = stmt.column_text (13);
+
+            all.add (track);
+        }
+
+        return all;
+    }
+
     public Gee.ArrayList<Objects.Album?> get_all_albums_by_artist (int id) {
         Sqlite.Statement stmt;
         string sql;

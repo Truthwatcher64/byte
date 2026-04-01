@@ -27,6 +27,7 @@ public class Views.Home : Gtk.EventBox {
         var playlists_button = new Widgets.HomeButton (_("Playlists"), "playlist-symbolic");
         var albums_button = new Widgets.HomeButton (_("Albums"), "byte-album-symbolic");
         var songs_button = new Widgets.HomeButton (_("Songs"), "folder-music-symbolic");
+        var folders_button = new Widgets.HomeButton (_("Folder"), "folder-music-symbolic");
         var artists_button = new Widgets.HomeButton (_("Artists"), "byte-artist-symbolic");
         var radios_button = new Widgets.HomeButton (_("Radios"), "byte-radio-symbolic");
         var favorites_button = new Widgets.HomeButton (_("Favorites"), "byte-favorite-symbolic");
@@ -54,6 +55,7 @@ public class Views.Home : Gtk.EventBox {
         items_grid.attach (artists_button, 1, 1, 1, 1);
         items_grid.attach (favorites_button,    0, 2, 1, 1);
         items_grid.attach (radios_button,   1, 2, 1, 1);
+        items_grid.attach (folders_button, 0, 3, 1, 1);
 
         var library_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         library_box.vexpand = true;
@@ -112,6 +114,31 @@ public class Views.Home : Gtk.EventBox {
             }
 
             Byte.navCtrl.push ("playlists_view");
+        });
+
+        folders_button.clicked.connect (() => {
+            string folder = Byte.scan_service.choose_folder (Byte.instance.main_window);
+            if (folder != null) {
+                var tracks = Byte.database.get_all_tracks_by_folder (folder);
+                if (tracks.size > 0) {
+                    Byte.utils.set_items (tracks, false, null);
+                    if (!Byte.navCtrl.has_key ("tracks_view")) {
+                        var view = new Views.Tracks ();
+                        Byte.navCtrl.add_named (view, "tracks_view");
+                    }
+                    Byte.navCtrl.push ("tracks_view");
+                } else {
+                    var dialog = new Gtk.MessageDialog (
+                        null,
+                        Gtk.DialogFlags.MODAL,
+                        Gtk.MessageType.INFO,
+                        Gtk.ButtonsType.OK,
+                        _("No tracks found in selected folder")
+                    );
+                    dialog.run ();
+                    dialog.destroy ();
+                }
+            }
         });
 
         favorites_button.clicked.connect (() => {
