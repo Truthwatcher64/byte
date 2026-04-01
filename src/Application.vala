@@ -12,6 +12,7 @@ public class Byte : Gtk.Application {
     public static Services.RadioBrowser radio_browser;
     public static Services.Lastfm lastfm_service;
     public static Services.NavController navCtrl;
+    public static Views.Folder? folder_view;
     public static Utils utils;
 
     public bool has_entry_focus = false;

@@ -122,11 +122,14 @@ public class Views.Home : Gtk.EventBox {
                 var tracks = Byte.database.get_all_tracks_by_folder (folder);
                 if (tracks.size > 0) {
                     Byte.utils.set_items (tracks, false, null);
-                    if (!Byte.navCtrl.has_key ("tracks_view")) {
-                        var view = new Views.Tracks ();
-                        Byte.navCtrl.add_named (view, "tracks_view");
+
+                    if (Byte.folder_view == null) {
+                        Byte.folder_view = new Views.Folder ();
+                        Byte.navCtrl.add_named (Byte.folder_view, "folder_view");
                     }
-                    Byte.navCtrl.push ("tracks_view");
+
+                    Byte.folder_view.set_folder (folder, tracks);
+                    Byte.navCtrl.push ("folder_view");
                 } else {
                     var dialog = new Gtk.MessageDialog (
                         null,

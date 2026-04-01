@@ -45,6 +45,7 @@ sources  = files(
     'Views/Home.vala',
     'Views/Albums.vala',
     'Views/Album.vala',
+    'Views/Folder.vala',
     'Views/Tracks.vala',
     'Views/Artists.vala',
     'Views/Radios.vala',
