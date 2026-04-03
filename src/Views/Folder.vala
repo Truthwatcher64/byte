@@ -128,15 +128,15 @@ public class Views.Folder : Gtk.EventBox {
 
         try {
             var folder_file = GLib.File.new_for_uri (folder_uri);
-            title_label.label = folder_file.get_basename ();
+            string decoded_name = GLib.Uri.unescape_string (folder_file.get_basename ());
+            title_label.label = decoded_name;
         } catch (Error e) {
             title_label.label = folder_uri;
         }
 
-        string folder_name = folder_uri.replace("file://", "");
-        folder_name = folder_name.substring(1);
-
-        path_label.label = folder_name;
+        string folder_path = folder_uri.replace ("file://", "");
+        string decoded_path = GLib.Uri.unescape_string (folder_path);
+        path_label.label = decoded_path;
 
         listbox.foreach ((widget) => {
             widget.destroy ();
