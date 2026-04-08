@@ -24,6 +24,31 @@ public class Views.Home : Gtk.EventBox {
         recently_added_label.halign =Gtk.Align.START;
         recently_added_label.use_markup = true;
 
+        var pinned_label = new Gtk.Label ("<b>%s</b>".printf (_("Pinned")));
+        pinned_label.get_style_context ().add_class ("font-bold");
+        pinned_label.get_style_context ().add_class ("h3");
+        pinned_label.get_style_context ().add_class ("label-color-primary");
+        pinned_label.margin_start = 9;
+        pinned_label.margin_top = 6;
+        pinned_label.halign = Gtk.Align.START;
+        pinned_label.use_markup = true;
+
+        var pinned_button_1 = new Widgets.HomeButton (_("Pinned 1"), "starred-symbolic");
+        var pinned_button_2 = new Widgets.HomeButton (_("Pinned 2"), "playlist-symbolic");
+        var pinned_button_3 = new Widgets.HomeButton (_("Pinned 3"), "folder-music-symbolic");
+        var pinned_button_4 = new Widgets.HomeButton (_("Pinned 4"), "byte-album-symbolic");
+        var pinned_button_5 = new Widgets.HomeButton (_("Pinned 5"), "byte-favorite-symbolic");
+
+        var pinned_grid = new Gtk.Grid ();
+        pinned_grid.column_spacing = 6;
+        pinned_grid.margin = 6;
+        pinned_grid.column_homogeneous = true;
+        pinned_grid.attach (pinned_button_1, 0, 0, 1, 1);
+        pinned_grid.attach (pinned_button_2, 1, 0, 1, 1);
+        pinned_grid.attach (pinned_button_3, 2, 0, 1, 1);
+        pinned_grid.attach (pinned_button_4, 3, 0, 1, 1);
+        pinned_grid.attach (pinned_button_5, 4, 0, 1, 1);
+
         var playlists_button = new Widgets.HomeButton (_("Playlists"), "playlist-symbolic");
         var albums_button = new Widgets.HomeButton (_("Albums"), "byte-album-symbolic");
         var songs_button = new Widgets.HomeButton (_("Songs"), "folder-music-symbolic");
@@ -57,6 +82,11 @@ public class Views.Home : Gtk.EventBox {
         items_grid.attach (radios_button,   1, 2, 1, 1);
         items_grid.attach (folders_button, 0, 3, 1, 1);
 
+        var pinned_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        pinned_box.hexpand = false;
+        pinned_box.pack_start (pinned_label, false, false, 0);
+        pinned_box.pack_start (pinned_grid, false, false, 0);
+
         var library_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         library_box.vexpand = true;
         library_box.hexpand = false;
@@ -66,6 +96,7 @@ public class Views.Home : Gtk.EventBox {
         library_box.pack_start (tracks_scrolled, true, true, 0);
 
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        main_box.pack_start (pinned_box, false, false, 0);
         main_box.pack_start (library_box, true, true, 0);
 
         add (main_box);
