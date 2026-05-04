@@ -148,5 +148,11 @@
 			<summary>Auto download covers</summary>
 			<description>Auto download covers</description>
 		</key>
+
+		<key name="pinned-items" type="as">
+			<default>[]</default>
+			<summary>Pinned items on home view</summary>
+			<description>Stores pinned folder and playlist targets for the home view buttons.</description>
+		</key>
     </schema>
 </schemalist>
