@@ -1,9 +1,13 @@
 public class Services.TagManager : GLib.Object {
     public signal void discovered_new_item (Objects.Artist artist, Objects.Album album, Objects.Track track);    
     private Gst.PbUtils.Discoverer discoverer;
+    private Gee.ArrayList<string> pending_uris;
+    private bool is_discovering = false;
     string unknown = _("Unknown");
      
     construct {
+        pending_uris = new Gee.ArrayList<string> ();
+
         try {
             discoverer = new Gst.PbUtils.Discoverer ((Gst.ClockTime) (5 * Gst.SECOND));
             discoverer.start ();
@@ -137,6 +141,9 @@ public class Services.TagManager : GLib.Object {
                 }
             }
 
+            is_discovering = false;
+            process_next_discover_uri ();
+
             info.dispose ();
 
             return false;
@@ -144,6 +151,20 @@ public class Services.TagManager : GLib.Object {
     }
 
     public void add_discover_uri (string uri) {
-        discoverer.discover_uri_async (uri);
+        pending_uris.add (uri);
+        process_next_discover_uri ();
+    }
+
+    private void process_next_discover_uri () {
+        if (is_discovering || pending_uris.size == 0) {
+            return;
+        }
+
+        is_discovering = true;
+
+        string next_uri = pending_uris.remove_at (0);
+        debug ("Discovering music file: %s", next_uri);
+
+        discoverer.discover_uri_async (next_uri);
     }
 }
