@@ -26,7 +26,7 @@ public class Services.TagManager : GLib.Object {
 
                 if (tags != null) {
                     uint64 duration = info.get_duration ();
-                    string o;
+                    string o = "";
                     GLib.Date? d; 
                     Gst.DateTime? dt;
                     uint u;
@@ -36,6 +36,7 @@ public class Services.TagManager : GLib.Object {
                     var track = new Objects.Track ();
                     track.duration = duration;
                     track.path = uri;
+                    track.title = "";
 
                     if (tags.get_string (Gst.Tags.TITLE, out o)) {
                         track.title = o;
@@ -82,6 +83,7 @@ public class Services.TagManager : GLib.Object {
 
                     // ALBUM OBJECT
                     var album = new Objects.Album ();
+                    album.title = "";
                     if (tags.get_string (Gst.Tags.ALBUM, out o)) {
                         album.title = o;
                     }
@@ -114,6 +116,7 @@ public class Services.TagManager : GLib.Object {
 
                     // ARTIST OBJECT
                     var artist = new Objects.Artist ();
+                    artist.name = "";
                     if (tags.get_string (Gst.Tags.ALBUM_ARTIST, out o)) {
                         track.album_artist = o;
                         artist.name = o;

@@ -14,8 +14,9 @@ public class Objects.Album : GLib.Object {
                   string genre = "") {
         this.id = id;
         this.artist_id = artist_id;
+        this.artist_name = artist_name;
         this.year = year;
-        this.genre = genre;
+        this.title = title;
         this.genre = genre;
     }
 }
